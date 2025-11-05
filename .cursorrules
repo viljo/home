@@ -1,0 +1,88 @@
+# Development Standards and Preferences
+
+## General Workflow
+- Work independently through implementation and testing cycles before presenting results
+- Minimize feedback rounds - concentrate all feedback requests to one time per iteration
+- NEVER mention that code/commits were created by AI in commit messages, code comments, or documentation
+- Always ask before pushing to remote repositories
+
+## Change Workflow
+When receiving new requirements:
+1. Update the specification (ask if new input conflicts with existing spec)
+2. Update the tests based on new requirements
+3. Update the code to match updated tests and spec
+4. Verify implementation against specification and tests
+
+## Python Development
+- **Always use `uv`** for package management (not pip/poetry/virtualenv)
+- **Use `pyproject.toml`** for project configuration
+- **Minimal dependencies first** - prefer standard library when possible
+- **Project structure**: Use src/ layout with separate tests/ directory
+- **Always add .gitignore** to every project
+
+## Code Quality
+- **Prioritize readability** unless specific performance requirements stated
+- **Use ruff** for linting and code quality checks (including security rules)
+- **Use bandit** for security vulnerability scanning
+- Code should be clear and maintainable first, optimized second
+
+## Architecture Principles
+- **Layered architecture**: Organize into distinct layers (presentation, business logic, data access)
+- **Separation of concerns**: Each component has single responsibility
+- **Loose coupling**: Components independent with well-defined interfaces
+- **SOLID principles**: Follow all five SOLID principles
+- **Modularity**: Small, reusable, independently testable modules
+- **Clear boundaries**: Enable parallel development
+- **Refactoring-friendly**: Easy to modify as requirements evolve
+
+## Testing (TDD Required)
+- **Test-Driven Development**: ALWAYS write unit tests FIRST
+- **Use pytest** for all Python testing
+- **Test structure**: Create tests/ subfolder with conftest.py for fixtures
+- **Ask before implementing**: Request info needed for comprehensive tests
+- **IDE configs**: Create test run configs for VS Code and PyCharm
+- **Enable static analysis**: ruff and bandit in IDE
+- **Coverage reporting**: Use pytest-cov
+
+## GUI Testing (when applicable)
+- Full-circle UI tests with button clicks and screenshot verification
+- Use pytest-qt, selenium, or playwright
+- Visual regression testing
+- End-to-end user workflow validation
+
+## Technology Stack
+- **API**: FastAPI with OAuth authentication
+- **Database**: PostgreSQL
+- **Logging**: loguru (not standard logging)
+- **Config**: pydantic-settings for environment configuration
+- **Containers**: Docker + Docker Compose for development
+- **Message Queue**: NATS
+- **Web Server**: nginx with Let's Encrypt
+- **IDEs**: PyCharm and VS Code with run/debug configurations
+
+## Security
+- Use bandit for vulnerability scanning
+- Use ruff with security rules enabled
+- Ansible Vault for Ansible secrets (password in secrets.txt, not checked in)
+- Never commit secrets to version control
+- Prevent OWASP Top 10 vulnerabilities (SQL injection, XSS, command injection, etc.)
+
+## Cross-Platform Compatibility
+- Prefer native Debian 13 components
+- Optimize for: macOS (ARM), Linux (x86-64), Windows (x86-64)
+- Choose libraries that support all three platforms
+
+## Infrastructure
+- **Goal**: Software-defined infrastructure (everything in code)
+- **Tools**: Ansible for config management, Proxmox for virtualization
+- **CI/CD**: GitLab CI/CD with 5-stage pipeline:
+  1. Linting (ruff)
+  2. Unit testing
+  3. Packaging
+  4. Integration testing
+  5. Security scanning (bandit, ruff security rules)
+
+## Version Control
+- Use semantic versioning
+- Always ask before pushing to remote repos
+- Do not mention AI in commit messages or code comments

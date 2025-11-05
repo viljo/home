@@ -1,0 +1,31 @@
+---
+title: Python Development Standards
+tags: [python, development, uv, ruff, bandit]
+---
+
+# Python Development Standards
+
+## Package Management
+- **Always use `uv`** for Python package management and virtual environments
+- Prefer `uv` commands over pip/virtualenv/poetry
+- **Use `pyproject.toml`** for project configuration
+- **Minimal dependencies as first choice**: Prefer standard library solutions when possible
+
+## Project Structure
+- **Use src/ layout** for Python projects with a separate `tests/` directory
+- Always add `.gitignore` to every project from the start
+
+## Code Quality
+- **Prioritize readability** unless specific performance requirements are stated
+- **Use ruff** for linting and code quality checks (including security rules)
+- Code should be clear and maintainable first, optimized second
+- **Use bandit** for security vulnerability scanning
+
+## Logging & Configuration
+- **Use loguru** for logging (not standard library logging)
+- **Use pydantic-settings** for environment configuration and .env file handling
+
+## IDE Setup
+- Create run/debug configurations for both VS Code and PyCharm
+- Enable static code analysis (ruff, bandit) in IDEs
+- Configure to run checks automatically on save or before test runs

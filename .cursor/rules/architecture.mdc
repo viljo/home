@@ -1,0 +1,35 @@
+---
+title: Architecture Principles
+tags: [architecture, solid, layered, design-patterns]
+---
+
+# Architecture Principles
+
+## Layered Architecture (STRONGLY PREFERRED)
+- **Organize code into distinct layers**: presentation, business logic, data access
+- **Separation of concerns**: Each component/module has a single, well-defined responsibility
+- **Loose coupling**: Components are independent and communicate through well-defined interfaces
+- **High cohesion**: Related functionality grouped together
+
+## Design Patterns
+- **Dependency injection**: Use DI patterns for testability and flexibility
+- **Interface-based design**: Program to interfaces, not implementations
+- **SOLID principles**: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
+- **Modularity**: Design in small, reusable, independently testable modules
+
+## Agile-Friendly Design
+- **Clear boundaries**: Enable parallel development across layers/components
+- **Incremental delivery**: Support iterative, incremental feature delivery
+- **Refactoring-friendly**: Structure code to be easily refactored as requirements evolve
+
+These principles simplify agile development by:
+- Enabling parallel work on different layers/components
+- Making it easier to change requirements without ripple effects
+- Facilitating test-driven development through testable components
+- Supporting continuous integration and deployment
+
+## Cross-Platform Compatibility
+- **Prefer native Debian 13 components** when designing software architecture
+- Even on macOS, design with Debian 13 native components for portability
+- **Target platforms**: macOS (ARM/Apple Silicon), Linux (x86-64), Windows (x86-64)
+- Choose libraries that support all three platforms

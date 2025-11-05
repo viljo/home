@@ -1,0 +1,39 @@
+---
+title: Testing Standards (TDD)
+tags: [testing, tdd, pytest]
+---
+
+# Testing Standards - Test-Driven Development
+
+## TDD Philosophy
+- **Test-Driven Development (TDD)**: ALWAYS write unit tests FIRST
+- **Ask before implementing**: Request information needed to write comprehensive tests
+- Tests should be written first, then implementation to satisfy the tests
+
+## Change Workflow
+When receiving user input:
+1. Update the specification (ask user if new input conflicts with existing spec)
+2. Update the tests based on new requirements
+3. Update the code to match updated tests and spec
+4. Verify implementation against specification and tests
+
+## Python Testing Setup
+- **Use pytest** as the testing framework for all Python projects
+- **Test directory structure**: Always create a `tests/` subfolder containing all test code
+- **Pytest fixtures**: Create proper pytest fixtures in `tests/conftest.py` for reusable test components
+- **Manual test script**: Create a shell script (e.g., `run_tests.sh`) for manual test runs
+- **Coverage reporting**: Include pytest-cov for test coverage metrics
+
+## IDE Test Configurations
+- Create test run configurations for VS Code (`.vscode/settings.json`)
+- Create test run configurations for PyCharm (`.idea/runConfigurations/`)
+- Enable static code analysis as per CI pipeline (ruff, bandit)
+- Ensure tests can be run both via IDE and command line
+
+## GUI Application Testing
+For GUI applications, ALWAYS include:
+- Button click simulation and interaction
+- Screenshot capture and verification
+- Visual regression testing
+- End-to-end user workflow validation
+- Use pytest-qt, selenium, or playwright

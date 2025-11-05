@@ -1,0 +1,40 @@
+---
+title: Security Standards
+tags: [security, owasp, bandit, secrets]
+---
+
+# Security Standards
+
+## Security Tools
+- **Use bandit** for security vulnerability scanning
+- **Use ruff** with security rules enabled
+- Run security checks as part of the development workflow
+
+## Secrets Management
+- **Ansible projects**: Use Ansible Vault for secrets, keep vault password in `secrets.txt` (add to .gitignore)
+- **Other projects**: Use encrypted secrets files, password/key files excluded from version control
+- **NEVER commit secrets or credentials** to version control
+
+## Authentication
+- **Use OAuth** for authentication strategy
+- Implement proper authentication and authorization checks
+- Follow security best practices for API authentication
+
+## OWASP Top 10 Prevention
+Prevent these vulnerabilities:
+- SQL injection (use parameterized queries, ORMs)
+- XSS (Cross-Site Scripting) - sanitize inputs, escape outputs
+- Command injection (avoid shell=True, validate inputs)
+- Path traversal (validate file paths)
+- Insecure deserialization
+- Broken authentication
+- Sensitive data exposure
+- XML External Entities (XXE)
+- Broken access control
+- Security misconfiguration
+
+## CI/CD Security
+Ensure CI pipeline includes:
+- Linting with security rules (ruff)
+- Security vulnerability scanning (bandit)
+- Dependency vulnerability checks
