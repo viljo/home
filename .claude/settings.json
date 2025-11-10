@@ -1,0 +1,6 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "echo \"$(basename \"$PWD\") on $(git branch --show-current 2>/dev/null || echo 'no git') using $CLAUDE_CODE_MODEL\""
+  }
+}
